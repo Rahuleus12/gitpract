@@ -8,9 +8,9 @@ student=[
 def hello_world():
     return 'Hello World'
 
-#@app.route('/students',methods=['GET'])
-#def get_students():
-#    return student
+@app.route('/students',methods=['GET'])
+def get_students():
+    return student
 
 @app.route('/students/<name>')
 def get_students(name):
