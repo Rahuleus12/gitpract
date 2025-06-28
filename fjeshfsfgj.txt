@@ -1,0 +1,23 @@
+#legacy
+eksctl create cluster --name rahul-eks-cluster --region us-west-1 --version 1.31 --nodegroup-name standard-workers --node-type t3.micro --nodes 2 --nodes-min 1 --nodes-max 2 --with-oidc -vpc-id vpc --subnets subnet --ssh-access --ssh-public-key Rahul_Key --managed
+
+#corrected
+eksctl create cluster \
+           --name Rahul-eks-cluster \
+           --region us-west-1 \
+           --version 1.31 \
+           --nodegroup-name standard-workers \
+           --node-type t3.micro \
+           --nodes 2 \
+           --nodes-min 1 \
+           --nodes-max 3 \
+           --vpc-private-subnets subnet-0b5fa99833c1c6e20,subnet-09bafaef5b90e79b7 \
+           --vpc-public-subnets subnet-0cc13b344447978a6,subnet-0e5134cbd501c5218 \
+           --with-oidc \
+           --ssh-access \
+           --ssh-public-key Rahul_Key \
+           --managed
+
+
+#vpc creation
+aws ec2 create-vpc --cidr-block 10.0.0.0/16 --region us-west-1
